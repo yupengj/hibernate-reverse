@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+repositories { jcenter() }
+
+dependencies {
+	compile "org.hibernate:hibernate-core:5.0.12.Final"
+	compile "org.apache.velocity:velocity-engine-core:2.0"
+	testCompile 'junit:junit:4.12'
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!-- 指定Hibernate配置文件的DTD信息 -->
+<!-- hibernate-configuration 是连接配置文件的根源素 -->
+<hibernate-configuration>
+	<session-factory>
+		<!-- 指定数据库所用到的驱动 -->
+		<property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+		<!-- 指定数据库链接的url，hibernate链接的数据库名 -->
+		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:DEV</property>
+		<!-- 指定连接数据库的用户名 -->
+		<property name="connection.username">core</property>
+		<!-- 指定连接数据库的用户口令 -->
+		<property name="connection.password">APP</property>
+		<!-- 指定数据库方言 -->
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<!--显示的sql语句格式化--> 
+		<property name="hibernate.show_sql">true</property>
+		<!--使显示的sql语句--> 
+		<property name="format_sql">true</property>
+		<!-- 罗列所有映射文件 -->
+		<!-- <mapping resource="org/crazyit/app/domain/News.hbm.xml"/> -->
+	</session-factory>
+</hibernate-configuration>

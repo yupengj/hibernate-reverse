@@ -1,0 +1,66 @@
+package ${bean.beanUrl};
+
+import java.util.Date;
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.gantang.framework.hibernate.model.AuditEntity;
+/**
+ * ${bean.beanName} 实体类
+ * @author $!{annotation.authorName}
+ * @date $!{annotation.date}
+ *
+ */
+@Entity
+@Table(name = "${bean.tableName} , schema = "${bean.schemaName}")
+public class ${bean.beanName} extends AuditEntity implements java.io.Serializable {
+
+#set($_int = "int")
+#set($_varchar = "varchar")
+#set($_datetime = "datetime")
+#set($_decimal = "decimal")
+#set($_tinyint = "tinyint")
+#set($_longtext = "longtext")
+##foreach begin
+##################################################
+#foreach ( $tableColumn in $descTable )
+#set($type = $descTableBean.type)
+##处理int，转换为java.lang.Integer
+##################################################
+#if($type == $_int)
+	private Integer ${descTableBean.field};
+#end
+##处理varchar，转换为java.lang.String
+##################################################
+#if($type == $_varchar)
+	private String ${descTableBean.field};
+#end
+##处理datetime，转换为java.util.Date
+##################################################
+#if($type == $_datetime)
+	private Date ${descTableBean.field};
+#end
+##处理decimal，转换为java.math.BigDecimal
+##################################################
+#if($type == $_decimal)
+	private BigDecimal ${descTableBean.field};
+#end
+##处理longtext，转换为java.lang.String
+##################################################
+#if($type == $_longtext)
+	private String ${descTableBean.field};
+#end
+##处理tinyint，转换为int
+##################################################
+#if($type == $_tinyint)
+	private int ${descTableBean.field};
+#end
+#end
+}

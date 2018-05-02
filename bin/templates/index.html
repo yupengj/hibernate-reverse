@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>生成代码</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/index.css}" rel="stylesheet"/>
+</head>
+<body>
+<p th:text="'Hello, ' + ${title}" /><br/>     
+<div class="area">
+    <div class="leftarea">
+    	<h2>生成代码配置</h2>
+		<form action="/demo/demo_form.asp">
+			<table>
+				<tr>
+					<td>author:</td>
+					<td><input type="text" name="annotationAuthorName"></td>
+				</tr>
+				<tr>
+					<td>beforeSchema:</td>
+					<td><input type="text" name="beforeSchemaName" value="cust"></td>
+				</tr>
+				<tr>
+					<td>aforeSchema:</td>
+					<td><input type="text" name="afterSchemaName" ></td>
+				</tr>
+				<tr>
+					<td>js 模板:</td>
+					<td>
+						mode <input type="checkbox" name="reverseJsTempName" value="mode" checked="checked" /> 
+  						store <input type="checkbox" name="reverseJsTempName" value="store" checked="checked" /> 
+  						view <input type="checkbox" name="reverseJsTempName" value="view" checked="checked" /> 
+  						controller <input type="checkbox" name="reverseJsTempName" value="controller" checked="checked" />
+					</td>
+				</tr>
+				<tr>
+					<td>java 模板: </td>
+					<td>
+						mode <input type="checkbox" name="reverseJavaTempName" value="mode" checked="checked" /> 
+  						dao <input type="checkbox" name="reverseJavaTempName" value="store" checked="checked" /> 
+  						daoImpl <input type="checkbox" name="reverseJavaTempName" value="view" checked="checked" />
+  						service <input type="checkbox" name="reverseJavaTempName" value="controller" checked="checked" />
+  						serviceImpl <input type="checkbox" name="reverseJavaTempName" value="mode" checked="checked" /> 
+  						controller <input type="checkbox" name="reverseJavaTempName" value="store" checked="checked" /> 
+					</td>
+				</tr>
+				<tr>
+					<td>表名:</td>
+					<td><textarea rows="10" cols="50%" readonly="true"></textarea></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="生成代码"></td>
+				</tr>
+			</table>
+		</form> 
+    </div>
+    <div class="rightarea"> 
+    	<h2>已存在表查询</h2> 
+    	 <table class="table">
+			<tr>
+				<td>表名：</td>
+				<td><input type="text"></td>
+				<td><button type="button">查询</button></td>
+			</tr>
+		</table>
+    	<div class="listDiv">
+    		<table class="listTable">
+	    	 	<tr>
+	    	 		<th>
+	    	 		<input type="checkbox" value="all"/>
+	    	 		</th>
+	    	 		<th>序号</th><th>表名</th>
+	    	 	</tr>
+				<tr>
+					<td><input type="checkbox" value="BM_PART_ASSEMBLY"/></td>
+					<td>1</td>
+					<td>BM_PART_ASSEMBLY</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" value="BM_PART_ASSEMBLY"/></td>
+					<td>2</td>
+					<td>BM_PART_ASSEMBLY2</td>
+				</tr>
+			</table>
+    	</div>
+    </div>    
+</div>
+
+  <!-- <script th:src="@{/js/jquery/1.11.0/jquery.js}"></script> -->
+<script>
+    $(function(){
+       alert("page load finish.");
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+#set($beanPrefix="gantang."+${bean.beanPackage}+"."+${bean.beanName})
+Ext.define('${beanPrefix}Store', {
+    extend: 'Ext.data.Store',
+    requires: ['${beanPrefix}Model'],
+    constructor: function (cfg) {
+        var me = this;
+        cfg = cfg || {};
+        var url = cfg.url || '[${bean.schemaNameLowerCase}]/${bean.nameVariable}/find';
+        me.callParent([Ext.apply({
+            model: '${beanPrefix}Model',
+            autoLoad: true,
+            remoteFilter: true,
+            pageSize: 50,
+            proxy: Ext.create("gantang.proxy.AjaxProxy", {
+                url: url,
+                jsonData: {
+                	filterInfo : cfg.filterParams || {},
+					pageInfo : {}
+                },
+                reader: {
+                    type: 'json',
+                    root: 'data.content',
+                    totalProperty: 'data.totalCount'
+                }
+            })
+        }, cfg)]);
+    }
+});

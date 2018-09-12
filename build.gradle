@@ -5,7 +5,7 @@ repositories { jcenter() }
 dependencies {
 	//compile "org.apache.velocity:velocity-engine-core:2.0"
 	//compile "org.slf4j:slf4j-simple:1.7.25"
-	testCompile 'junit:junit:4.12'
+	//testCompile 'junit:junit:4.12'
 	//compile 'org.springframework.boot:spring-boot-starter-parent:2.0.0.RELEASE'
 	compile 'org.springframework.boot:spring-boot-starter-web:2.0.0.RELEASE'
 	compile 'org.springframework.boot:spring-boot-starter-jdbc:2.0.0.RELEASE'

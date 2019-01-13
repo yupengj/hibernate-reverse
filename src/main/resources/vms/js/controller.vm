@@ -1,13 +1,12 @@
-#set($beanPrefix="gantang."+${bean.beanPackage}+"."+${bean.beanName})
-Ext.define('${beanPrefix}Controller', {
+Ext.define('${bean.beanPackage}', {
 	extend : "Ext.app.Controller",
-	models : ['${beanPrefix}Model'],
-	views : ['${beanPrefix}View'],
+	models : ['${bean.beanPackagePrefix}Model'],
+	views : ['${bean.beanPackagePrefix}View'],
 	init : function(application) {
 		this.control({
 		});
 	},
-	mainView : '${beanPrefix}View',
+	mainView : '${bean.beanPackagePrefix}View',
 	viewConfig : {
 		width : '95%',
 		height : '90%'

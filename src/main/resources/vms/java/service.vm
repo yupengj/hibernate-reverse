@@ -9,7 +9,7 @@ import ${bean.beanPackagePrefix}.model.${bean.beanName};
 /**
  * ${bean.beanName}Service
  * 
- * @author $!{annotationAuthor}
+ * @author $!{bean.author}
  *
  */
 public interface ${bean.beanName}Service {

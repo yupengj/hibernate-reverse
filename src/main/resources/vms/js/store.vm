@@ -1,13 +1,12 @@
-#set($beanPrefix="gantang."+${bean.beanPackage}+"."+${bean.beanName})
-Ext.define('${beanPrefix}Store', {
+Ext.define('${bean.beanPackage}', {
     extend: 'Ext.data.Store',
-    requires: ['${beanPrefix}Model'],
+    requires: ['${bean.beanPackagePrefix}Model'],
     constructor: function (cfg) {
         var me = this;
         cfg = cfg || {};
         var url = cfg.url || '[${bean.schemaNameLowerCase}]/${bean.nameVariable}/find';
         me.callParent([Ext.apply({
-            model: '${beanPrefix}Model',
+            model: '${bean.beanPackagePrefix}Model',
             autoLoad: true,
             remoteFilter: true,
             pageSize: 50,

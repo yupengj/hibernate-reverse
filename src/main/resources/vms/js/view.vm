@@ -1,5 +1,4 @@
-#set($beanPrefix="gantang."+${bean.beanPackage}+"."+${bean.beanName})
-Ext.define('${beanPrefix}View', {
+Ext.define('${bean.beanPackage}', {
 	extend : 'gantang.component.GantSearchListEditPanel',
 	xtype : '${bean.schemaNameLowerCase}_${bean.nameVariable}View',
 	uses : [],
@@ -21,7 +20,7 @@ Ext.define('${beanPrefix}View', {
 			name : 'text2'
 		}]
 	},
-	//barsResourcePath:{"startbutton" : "${beanPrefix}View.startbutton"},
+	//barsResourcePath:{"startbutton" : "${bean.beanPackagePrefix}View.startbutton"},
 	bars : ['startbutton', 'endbutton', 'add', 'restore', 'delete', 'save'],
 	columns : [{
 		#foreach ( $property in ${propertyList} )
@@ -36,7 +35,7 @@ Ext.define('${beanPrefix}View', {
 	}],
 	initComponent : function() {
 		Ext.apply(this, {
-			store : Ext.create('${beanPrefix}Store',)
+			store : Ext.create('${bean.beanPackagePrefix}Store',)
 		});
 		this.callParent(arguments);
 	}

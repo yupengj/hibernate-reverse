@@ -10,6 +10,8 @@ import java.util.List;
  */
 public class GenerateBean {
 
+	private String author;
+
 	/**
 	 * bean的名称
 	 */
@@ -25,6 +27,8 @@ public class GenerateBean {
 	private String beanPackage;
 	private List<GenerateProperty> properties = new ArrayList<>();
 
+	private String codePath;
+
 	public GenerateBean(String beanName, String tableName, String schemaName, List<GenerateProperty> properties) {
 		super();
 		this.beanName = beanName;
@@ -33,6 +37,14 @@ public class GenerateBean {
 		this.schemaName = schemaName;
 		this.schemaNameLowerCase = schemaName.toLowerCase();
 		this.properties = properties;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 	public String getBeanName() {
@@ -99,11 +111,19 @@ public class GenerateBean {
 		this.properties = properties;
 	}
 
+	public String getCodePath() {
+		return codePath;
+	}
+
+	public void setCodePath(String codePath) {
+		this.codePath = codePath;
+	}
+
 	@Override
 	public String toString() {
-		return "GenerateBean [beanName=" + beanName + ", tableName=" + tableName + ", nameVariable=" + nameVariable + ", schemaName=" + schemaName
-				+ ", schemaNameLowerCase=" + schemaNameLowerCase + ", beanPackagePrefix=" + beanPackagePrefix + ", beanPackage=" + beanPackage + ", properties="
-				+ properties + "]";
+		return "GenerateBean [author=" + author + ", beanName=" + beanName + ", tableName=" + tableName + ", nameVariable=" + nameVariable + ", schemaName="
+				+ schemaName + ", schemaNameLowerCase=" + schemaNameLowerCase + ", beanPackagePrefix=" + beanPackagePrefix + ", beanPackage=" + beanPackage
+				+ ", properties=" + properties + ", codePath=" + codePath + "]";
 	}
 
 }

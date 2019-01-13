@@ -1,5 +1,4 @@
-#set($beanPrefix="gantang."+${bean.beanPackage}+"."+${bean.beanName})
-Ext.define('${beanPrefix}Model', {
+Ext.define('${bean.beanPackage}', {
 	extend : 'gantang.model.AuditModel',
 	fields : [{
 	#foreach ( $property in ${propertyList} )

@@ -7,7 +7,7 @@ import ${bean.beanPackagePrefix}.model.${bean.beanName};
 /**
  * ${bean.beanName}Dao
  *
- * @author $!{annotationAuthor}
+ * @author $!{bean.author}
  *
  */
 public interface ${bean.beanName}Dao extends IQbcDao<${bean.beanName}> {

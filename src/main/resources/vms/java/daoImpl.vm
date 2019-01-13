@@ -10,7 +10,7 @@ import ${bean.beanPackagePrefix}.model.${bean.beanName};
 /**
  * ${bean.beanName}DaoImpl
  *
- * @author $!{annotationAuthor}
+ * @author $!{bean.author}
  *
  */
 @Repository("${bean.nameVariable}Dao")

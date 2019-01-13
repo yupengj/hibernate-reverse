@@ -67,3 +67,10 @@ jsTCode=model,store,view,controller
 3. 配置 config.properties 文件
 4. 运行 GenerateCode 类中的 main 方法 
 5. 生成的代码在项目的根目录的 codes 文件夹下
+
+
+## 更新记录
+- [x] 修改为不使用 spring-boot ,直接用JDBC连接数据库
+
+## 后续更新
+- [ ] 支持 psotgresSql 数据库反向生成java

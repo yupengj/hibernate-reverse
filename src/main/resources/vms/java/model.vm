@@ -33,7 +33,8 @@ public class ${bean.beanName} extends AuditEntity implements java.io.Serializabl
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	#foreach ( $property in ${propertyList} )
-	private ${property.type} ${property.name};
+	private ${property.type} ${property.name};#if(${property.cloumnDesc})// ${property.cloumnDesc}#end
+	
 	#end
 	
 	@SequenceGenerator(name = "generator", sequenceName = "${bean.schemaName}.SEQ_${bean.tableName}_ID", allocationSize = 1)

@@ -29,6 +29,7 @@ public class GenerateProperty {
 
 	private String name;
 	private String cloumnName;
+	private String cloumnDesc;
 	private String methodName;
 	private String type;
 	private String jsType;
@@ -37,11 +38,12 @@ public class GenerateProperty {
 	private Integer scale;
 	private String isNull;
 
-	public GenerateProperty(String name, String cloumnName, String type, Integer length, Integer precision, Integer scale, String isNull) {
+	public GenerateProperty(String name, String cloumnName, String cloumnDesc, String type, Integer length, Integer precision, Integer scale, String isNull) {
 		super();
 		this.name = name;
 		this.methodName = name.substring(0, 1).toUpperCase() + name.substring(1);
 		this.cloumnName = cloumnName;
+		this.cloumnDesc = cloumnDesc;
 		this.type = TYPE_MAPPING.get(type);
 		this.jsType = JS_TYPE_MAPPING.get(type);
 		this.length = length;
@@ -64,6 +66,14 @@ public class GenerateProperty {
 
 	public void setCloumnName(String cloumnName) {
 		this.cloumnName = cloumnName;
+	}
+
+	public String getCloumnDesc() {
+		return cloumnDesc;
+	}
+
+	public void setCloumnDesc(String cloumnDesc) {
+		this.cloumnDesc = cloumnDesc;
 	}
 
 	public String getMethodName() {
@@ -124,8 +134,8 @@ public class GenerateProperty {
 
 	@Override
 	public String toString() {
-		return "Property [name=" + name + ", cloumnName=" + cloumnName + ", methodName=" + methodName + ", type=" + type + ", length=" + length + ", precision="
-				+ precision + ", scale=" + scale + ", isNull=" + isNull + "]";
+		return "GenerateProperty [name=" + name + ", cloumnName=" + cloumnName + ", cloumnDesc=" + cloumnDesc + ", methodName=" + methodName + ", type=" + type
+				+ ", jsType=" + jsType + ", length=" + length + ", precision=" + precision + ", scale=" + scale + ", isNull=" + isNull + "]";
 	}
 
 }

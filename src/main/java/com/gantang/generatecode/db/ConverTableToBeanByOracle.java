@@ -17,17 +17,19 @@ public class ConverTableToBeanByOracle implements ConverTableToBean {
 
 	// select * from all_col_comments where TABLE_NAME = 'BM_PART_ASSEMBLY'
 	public String selectTableColumnSql(SelectDbConfig selectDbConfig) {
+
 		StringBuffer hql = new StringBuffer(
-				"select owner,table_name,column_name,data_type,data_length,data_precision,data_scale,nullable from all_tab_columns");
+				"select m.owner,m.table_name,m.column_name,m.data_type,m.data_length,m.data_precision,m.data_scale,m.nullable,d.comments ");
+		hql.append(" from all_tab_columns m  left join  all_col_comments d on (d.column_name = m.column_name and d.table_name = m.table_name) ");
 		hql.append(" where 1=1 ");
 
 		if (selectDbConfig.getSchema() != null && !selectDbConfig.getSchema().isEmpty()) {
-			hql.append(buildSqlInWhere("owner", selectDbConfig.getSchema(), true));
+			hql.append(buildSqlInWhere("m.owner", selectDbConfig.getSchema(), true));
 		} else {
-			hql.append(buildSqlInWhere("owner", selectDbConfig.getAllowSchema(), true));
+			hql.append(buildSqlInWhere("m.owner", selectDbConfig.getAllowSchema(), true));
 		}
-		hql.append(buildSqlInWhere("table_name", selectDbConfig.getTable(), true));
-		hql.append(buildSqlInWhere("table_name", selectDbConfig.getIgnoreTable(), false));
+		hql.append(buildSqlInWhere("m.table_name", selectDbConfig.getTable(), true));
+		hql.append(buildSqlInWhere("m.table_name", selectDbConfig.getIgnoreTable(), false));
 		return hql.toString();
 	}
 
@@ -50,7 +52,8 @@ public class ConverTableToBeanByOracle implements ConverTableToBean {
 			Integer length = obj.get("data_length") == null ? null : ((BigDecimal) obj.get("data_length")).intValue();
 			Integer precision = obj.get("data_precision") == null ? null : ((BigDecimal) obj.get("data_precision")).intValue();
 			Integer scale = obj.get("dtat_scale") == null ? null : ((BigDecimal) obj.get("dtat_scale")).intValue();
-			GenerateProperty property = new GenerateProperty(name, cloumnName, (String) obj.get("data_type"), length, precision, scale,
+			String comments = obj.get("comments") == null ? null : obj.get("comments").toString();
+			GenerateProperty property = new GenerateProperty(name, cloumnName, comments, (String) obj.get("data_type"), length, precision, scale,
 					(String) obj.get("number"));
 			propertys.add(property);
 		}

@@ -2,7 +2,7 @@ Ext.define('${bean.beanPackage}', {
 	extend : 'gantang.model.AuditModel',
 	fields : [{
 	#foreach ( $property in ${propertyList} )
-		name : '${property.name}',
+			name : '${property.name}',
 			type : '${property.jsType}'
 		},{
 	#end

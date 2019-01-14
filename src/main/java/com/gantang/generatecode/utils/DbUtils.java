@@ -100,6 +100,6 @@ public class DbUtils {
 	private static List<String> resultColumns(String hql) {
 		String columns = hql.substring(hql.indexOf("select") + "select".length(), hql.indexOf("from")).trim();
 		String[] columnsArr = columns.split(",");
-		return Stream.of(columnsArr).filter(it -> it != null && it.length() != 0).map(it -> it.trim()).collect(Collectors.toList());
+		return Stream.of(columnsArr).filter(it -> it != null && it.length() != 0).map(it -> it.substring(it.indexOf(".") + 1)).collect(Collectors.toList());
 	}
 }

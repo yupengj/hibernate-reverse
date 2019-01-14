@@ -71,6 +71,10 @@ jsTCode=model,store,view,controller
 
 ## 更新记录
 - [x] 修改为不使用 spring-boot ,直接用JDBC连接数据库
+- [x] 数据库列的描述生成到代码的model中
+```java
+private Long id; // 主键
+```
 
 ## 后续更新
 - [ ] 支持 psotgresSql 数据库反向生成java

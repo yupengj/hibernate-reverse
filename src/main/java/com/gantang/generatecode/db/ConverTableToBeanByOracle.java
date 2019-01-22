@@ -15,7 +15,6 @@ import com.gantang.generatecode.model.GenerateProperty;
  */
 public class ConverTableToBeanByOracle implements ConverTableToBean {
 
-	// select * from all_col_comments where TABLE_NAME = 'BM_PART_ASSEMBLY'
 	public String selectTableColumnSql(SelectDbConfig selectDbConfig) {
 
 		StringBuffer hql = new StringBuffer(

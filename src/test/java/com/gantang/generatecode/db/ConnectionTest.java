@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
-import com.gantang.generatecode.utils.DbTypeUtil;
 import com.gantang.generatecode.utils.DbUtils;
 
 public class ConnectionTest {
@@ -17,7 +16,6 @@ public class ConnectionTest {
 		System.out.println(conn);
 		System.out.println(conn.getMetaData().getDriverName());
 
-		System.out.println(DbTypeUtil.getCurrentDbType());
 
 		DbUtils.closeController(conn);
 	}

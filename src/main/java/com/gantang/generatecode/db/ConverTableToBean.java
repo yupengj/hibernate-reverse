@@ -117,10 +117,10 @@ public interface ConverTableToBean {
 	};
 
 	static ConverTableToBean newInstance() {
-		if (DbTypeUtil.ORACLE.equals(DbTypeUtil.getCurrentDbType())) {
+		if (DbTypeUtil.isOracle()) {
 			return new ConverTableToBeanByOracle();
 		}
-		if (DbTypeUtil.PG.equals(DbTypeUtil.getCurrentDbType())) {
+		if (DbTypeUtil.isPgSql()) {
 			return new ConverTableToBeanByOracle();
 		}
 		return null;

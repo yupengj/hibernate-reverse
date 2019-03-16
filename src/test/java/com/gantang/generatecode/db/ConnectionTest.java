@@ -17,7 +17,6 @@ public class ConnectionTest {
 		System.out.println(conn);
 		System.out.println(conn.getMetaData().getDriverName());
 
-		System.out.println(DbTypeUtil.getCurrentDbType());
 
 		DbUtils.closeController(conn);
 	}

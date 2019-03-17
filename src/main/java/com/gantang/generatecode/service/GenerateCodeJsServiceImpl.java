@@ -47,7 +47,7 @@ public class GenerateCodeJsServiceImpl implements GenerateCodeService {
 
 	@Override
 	public void setCodePath(GenerateBean bean, GenerateConfig config, String tempName) {
-		String path = Config.codeRootPath() + getTempType() + "\\";
+		String path = Config.generateCodePath() + getTempType() + "\\";
 		String packagePath = bean.getBeanPackage().replace(config.getJsRootPackage() + ".", "");
 		String fileName = bean.getBeanName() + tempName.substring(0, 1).toUpperCase() + tempName.substring(1);
 		packagePath = packagePath.replace(fileName, "");

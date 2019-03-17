@@ -1,8 +1,7 @@
 
 package com.gantang.generatecode.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.gantang.generatecode.utils.PropertyTypeMapping;
 
 /**
  * 
@@ -10,22 +9,6 @@ import java.util.Map;
  *
  */
 public class GenerateProperty {
-
-	private static Map<String, String> TYPE_MAPPING = new HashMap<>();
-	private static Map<String, String> JS_TYPE_MAPPING = new HashMap<>();
-	static {
-		TYPE_MAPPING.put("VARCHAR2", "String");
-		TYPE_MAPPING.put("NVARCHAR2", "String");
-		TYPE_MAPPING.put("CHAR", "Boolean");
-		TYPE_MAPPING.put("NUMBER", "Long");
-		TYPE_MAPPING.put("DATE", "Date");
-
-		JS_TYPE_MAPPING.put("VARCHAR2", "string");
-		JS_TYPE_MAPPING.put("NVARCHAR2", "string");
-		JS_TYPE_MAPPING.put("CHAR", "boolean");
-		JS_TYPE_MAPPING.put("NUMBER", "number");
-		JS_TYPE_MAPPING.put("DATE", "date");
-	}
 
 	private String name;
 	private String cloumnName;
@@ -44,8 +27,8 @@ public class GenerateProperty {
 		this.methodName = name.substring(0, 1).toUpperCase() + name.substring(1);
 		this.cloumnName = cloumnName;
 		this.cloumnDesc = cloumnDesc;
-		this.type = TYPE_MAPPING.get(type);
-		this.jsType = JS_TYPE_MAPPING.get(type);
+		this.type = PropertyTypeMapping.getJavaTypeMapping(type);
+		this.jsType = PropertyTypeMapping.getJsTypeMapping(type);
 		this.length = length;
 		this.precision = precision;
 		this.scale = scale;

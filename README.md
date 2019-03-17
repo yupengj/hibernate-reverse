@@ -1,7 +1,7 @@
 # hibernate-reverse 生成 java 和 Ext.js 代码
 
 ## 实现方式技术
-基于 JDBC + velocity（V1.4.7）实现。构建工具使用的 gradle
+基于 JDBC + velocity（V1.4.7）实现。构建工具 gradle
 
 ## 如何配置与扩展
 - 成代码模板在 vms 目录下可自行修改
@@ -12,12 +12,12 @@
 datasource.driverClassName=oracle.jdbc.driver.OracleDriver
 datasource.url=jdbc:oracle:thin:@localhost:1521:orcl
 datasource.username=core
-datasource.password=APP
+datasource.password=core
 
 #datasource.driverClassName=oracle.jdbc.driver.OracleDriver
-#datasource.url=jdbc:postgresql://127.0.0.1:5432/postgres
+#datasource.url=jdbc:postgresql://localhost:5432/postgres
 #datasource.username=core
-#datasource.password=APP
+#datasource.password=core
 
 #允许生成代码的 schema 集合
 allowSchema=mstdata,bommgmt,chgmgmt,cfgmgmt,integration,cust
@@ -58,6 +58,9 @@ javaCode=model,dao,daoImpl,service,serviceImpl,controller
 
 #生成js代码 model,store,view,controller
 jsTCode=model,store,view,controller
+
+#生成代码存放位置
+outPath=D:/generateCode/
 ```
 
 
@@ -66,7 +69,7 @@ jsTCode=model,store,view,controller
 2. 把 lib 下的 oracle 驱动包 add to buile path
 3. 配置 config.properties 文件
 4. 运行 GenerateCode 类中的 main 方法 
-5. 生成的代码在项目的根目录的 codes 文件夹下
+5. 生成的代码在参数 outPath 指定的路径
 
 
 ## 更新记录
@@ -75,6 +78,4 @@ jsTCode=model,store,view,controller
 ```java
 private Long id; // 主键
 ```
-
-## 后续更新
-- [ ] 支持 psotgresSql 数据库反向生成java
+- [x] 支持 psotgresSql 数据库反向生成java

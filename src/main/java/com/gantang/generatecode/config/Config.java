@@ -9,19 +9,29 @@ import java.util.stream.Stream;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class Config {
+/**
+ * 
+ * @author jyp10@foxmail.com
+ *
+ */
+public final class Config {
 
 	private static String CONFIG_PATH = "/config.properties";
 
-	private static Properties properties;
+	private static Properties PROPERTIES;
 
 	static {
-		properties = loadConfig();
+		PROPERTIES = loadConfig();
 	}
 
 	private Config() {
 	}
 
+	/**
+	 * 加载配置文件
+	 * 
+	 * @return Properties
+	 */
 	private static Properties loadConfig() {
 		InputStream insss = Object.class.getResourceAsStream(CONFIG_PATH);
 		Properties pss = new Properties();
@@ -33,17 +43,29 @@ public class Config {
 		return pss;
 	}
 
+	/**
+	 * 根据 key 得到 value
+	 * 
+	 * @param key key
+	 * @return value
+	 */
 	public static String getValue(String key) {
 		if (key == null) {
 			return null;
 		}
-		Object value = properties.getProperty(key);
+		Object value = PROPERTIES.getProperty(key);
 		if (value == null) {
 			return null;
 		}
 		return value.toString();
 	}
 
+	/**
+	 * 得到 set 集合配置
+	 * 
+	 * @param key key
+	 * @return set 集合 value
+	 */
 	public static Set<String> getSetValue(String key) {
 		String value = getValue(key);
 		if (value == null) {
@@ -57,7 +79,12 @@ public class Config {
 		return values;
 	}
 
-	public static String codeRootPath() {
-		return System.getProperty("user.dir") + "\\codes\\";
+	/**
+	 * 生成代码文件的位置
+	 * 
+	 * @return 文件路径
+	 */
+	public static String generateCodePath() {
+		return getValue("outPath") == null ? "D:/generateCode/" : getValue("outPath");
 	}
 }

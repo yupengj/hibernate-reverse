@@ -55,7 +55,7 @@ public class GenerateCodeJavaServiceImpl implements GenerateCodeService {
 
 	@Override
 	public void setCodePath(GenerateBean bean, GenerateConfig config, String tempName) {
-		String path = Config.codeRootPath() + getTempType() + "\\";
+		String path = Config.generateCodePath() + getTempType() + "\\";
 		path += bean.getBeanPackage().replace(".", "\\");
 
 		String fileSuffix = ".java";

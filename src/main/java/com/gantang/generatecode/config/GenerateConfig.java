@@ -4,10 +4,10 @@ import java.util.Set;
 
 /**
  * 
- * @author jiangyp
+ * @author jyp10@foxmail.com
  *
  */
-public class GenerateConfig {
+public final class GenerateConfig {
 
 	private static final String AUTHOR = "author";
 	private static final String ROOT_PACKAGE = "rootPackage";
@@ -17,7 +17,7 @@ public class GenerateConfig {
 	private static final String JAVA_CODE = "javaCode";
 	private static final String JS_CODE = "jsTCode";
 
-	private static GenerateConfig generateConfig = new GenerateConfig();
+	private static GenerateConfig GENERATE_CONFIG = new GenerateConfig();
 
 	private String jsRootPackage;
 	private String author;
@@ -37,8 +37,13 @@ public class GenerateConfig {
 		this.reverseJsTempName = Config.getSetValue(JS_CODE);
 	}
 
+	/**
+	 * 创建 GenerateConfig
+	 * 
+	 * @return GenerateConfig
+	 */
 	public static GenerateConfig newInstance() {
-		return generateConfig;
+		return GENERATE_CONFIG;
 	}
 
 	public String getAuthor() {

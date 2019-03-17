@@ -29,9 +29,9 @@ public class GenerateBean {
 
 	private String codePath;
 
-	public GenerateBean(String beanName, String tableName, String schemaName, List<GenerateProperty> properties) {
+	public GenerateBean(String tableName, String schemaName, List<GenerateProperty> properties) {
 		super();
-		this.beanName = beanName;
+		this.beanName = handleBeanName(tableName);
 		this.nameVariable = beanName.substring(0, 1).toLowerCase() + beanName.substring(1);
 		this.tableName = tableName;
 		this.schemaName = schemaName;
@@ -117,6 +117,27 @@ public class GenerateBean {
 
 	public void setCodePath(String codePath) {
 		this.codePath = codePath;
+	}
+
+	/**
+	 * 把 表名转换成类名
+	 * 
+	 * @param tableName 表名
+	 * @return 类名集合
+	 */
+	private String handleBeanName(String tableName) {
+		if (tableName.contains("_")) {
+			String[] array = tableName.split("_");
+			String beanName = "";
+			for (int i = 1; i < array.length; i++) {
+				// 第一个元素去掉
+				String str = array[i];
+				beanName = beanName + str.substring(0, 1) + str.substring(1).toLowerCase();
+			}
+			return beanName;
+		} else {
+			return tableName.substring(0, 1) + tableName.substring(1).toLowerCase();
+		}
 	}
 
 	@Override

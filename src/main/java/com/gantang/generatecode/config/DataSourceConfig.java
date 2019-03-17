@@ -1,13 +1,19 @@
 package com.gantang.generatecode.config;
 
-public class DataSourceConfig {
+/**
+ * DataSource 配置
+ * 
+ * @author jyp10@foxmail.com
+ *
+ */
+public final class DataSourceConfig {
 
 	private static String DEIVATE_KEY = "datasource.driverClassName";
 	private static String URL_KEY = "datasource.url";
 	private static String USER_NAME_KEY = "datasource.username";
 	private static String PASSWORD_KEY = "datasource.password";
 
-	private static DataSourceConfig dataSourceConfig = new DataSourceConfig();
+	private static DataSourceConfig DATA_SOURCE_COFIG = new DataSourceConfig();
 
 	private String driver;
 	private String url;
@@ -33,10 +39,21 @@ public class DataSourceConfig {
 		}
 	}
 
+	/**
+	 * 创建 DataSourceConfig
+	 * 
+	 * @return DataSourceConfig
+	 */
 	public static DataSourceConfig newInstance() {
-		return dataSourceConfig;
+		return DATA_SOURCE_COFIG;
 	}
 
+	/**
+	 * 异常提示信息
+	 * 
+	 * @param key key
+	 * @return mess
+	 */
 	private String getMsg(String key) {
 		return "参数 " + key + " 缺少值";
 	}

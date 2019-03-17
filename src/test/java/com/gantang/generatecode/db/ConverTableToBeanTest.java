@@ -1,21 +1,29 @@
 package com.gantang.generatecode.db;
 
-import org.junit.Before;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
 import org.junit.Test;
 
 import com.gantang.generatecode.config.SelectDbConfig;
+import com.gantang.generatecode.model.GenerateBean;
 
 public class ConverTableToBeanTest {
 
-	ConverTableToBean cttb = null;
-
-	@Before
-	public void beford() {
-		cttb = new ConverTableToBeanByOracle();
+	@Test
+	public void testGetSql() {
+		String sql = ConverTableToBean.newInstance().getSql(SelectDbConfig.newInstance());
+		assertNotNull(sql);
+		assertNotEquals(sql, "");
 	}
 
 	@Test
-	public void testSelectTable() {
-		cttb.loadGenerateBean(SelectDbConfig.newInstance());
+	public void testLoadGenerateBean() {
+		List<GenerateBean> list = ConverTableToBean.newInstance().loadGenerateBean(SelectDbConfig.newInstance());
+		assertNotNull(list);
+		assertTrue(list.size() != 0);
 	}
 }

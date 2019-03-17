@@ -50,7 +50,7 @@ public class ${bean.beanName} extends AuditEntity implements java.io.Serializabl
 	}
 
 	#foreach ( $property in ${propertyList} )
-	@Column(name = "${property.cloumnName}", length = ${property.length}#if(${property.nullable} == $N), nullable = false#end#if(${property.precision}), precision = ${property.precision}#end#if(${property.scale}), scale = ${property.scale}#end)
+	@Column(name = "${property.cloumnName}"#if(${property.length}), length = ${property.length}#end#if(${property.nullable} == $N), nullable = false#end#if(${property.precision}), precision = ${property.precision}#end#if(${property.scale}), scale = ${property.scale}#end)
 	public ${property.type} get${property.methodName}() {
 		return ${property.name};
 	}

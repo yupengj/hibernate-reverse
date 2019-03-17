@@ -13,18 +13,25 @@ import com.gantang.generatecode.model.GenerateBean;
 import com.gantang.generatecode.service.GenerateCodeJavaServiceImpl;
 import com.gantang.generatecode.service.GenerateCodeJsServiceImpl;
 import com.gantang.generatecode.service.GenerateCodeService;
-import com.gantang.generatecode.utils.DbUtils;
 
+/**
+ * 
+ * @author jyp10@foxmail.com
+ *
+ */
 public class GenerateCode {
 
+	/**
+	 * 主方法
+	 * 
+	 * @param args args
+	 */
 	public static void main(String[] args) {
 
 		final Logger log = LoggerFactory.getLogger(GenerateCode.class);
 
-		DbUtils.initDbType();
-
 		List<GenerateBean> beans = ConverTableToBean.newInstance().loadGenerateBean(SelectDbConfig.newInstance());
-		log.info("查询要生成代码的表完成");
+		log.info("查询要生成代码的表完成, 共生成 :" + beans.size() + " 个表");
 
 		GenerateConfig generateConfig = GenerateConfig.newInstance();
 
@@ -34,6 +41,6 @@ public class GenerateCode {
 		generateCodeService = new GenerateCodeJsServiceImpl();
 		generateCodeService.generateCode(beans, generateConfig);
 
-		log.info("生成代码成功,代码路径:" + Config.codeRootPath());
+		log.info("生成代码成功,代码路径:" + Config.generateCodePath());
 	}
 }

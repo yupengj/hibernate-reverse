@@ -1,5 +1,7 @@
 package com.gantang.generatecode.db;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -10,13 +12,9 @@ import com.gantang.generatecode.utils.DbUtils;
 public class ConnectionTest {
 
 	@Test
-	public void testOraConnection() throws SQLException {
-
+	public void testConnection() throws SQLException {
 		Connection conn = DbUtils.getConnection();
-		System.out.println(conn);
-		System.out.println(conn.getMetaData().getDriverName());
-
-
+		assertNotNull(conn);
 		DbUtils.closeController(conn);
 	}
 }

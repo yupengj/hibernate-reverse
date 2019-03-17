@@ -5,7 +5,12 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SelectDbConfig {
+/**
+ * 
+ * @author jyp10@foxmail.com
+ *
+ */
+public final class SelectDbConfig {
 
 	private final Logger log = LoggerFactory.getLogger(SelectDbConfig.class);
 
@@ -14,7 +19,7 @@ public class SelectDbConfig {
 	private static final String TABLE_KEY = "table";
 	private static final String IGNORE_TABLE = "ignoreTable";
 
-	private static SelectDbConfig selectDbConfig = new SelectDbConfig();
+	private static SelectDbConfig SELECT_DB_CONFIG = new SelectDbConfig();
 
 	private Set<String> allowSchema;
 	private Set<String> schema;
@@ -26,10 +31,18 @@ public class SelectDbConfig {
 		log.info("初始化数据库连接参数完成");
 	}
 
+	/**
+	 * CREATE SelectDbConfig
+	 * 
+	 * @return SelectDbConfig
+	 */
 	public static SelectDbConfig newInstance() {
-		return selectDbConfig;
+		return SELECT_DB_CONFIG;
 	}
 
+	/**
+	 * 初始化查询配置
+	 */
 	private void initSelectDbConfig() {
 		this.allowSchema = Config.getSetValue(ALLOW_SCHEMA_KEY);
 		if (this.allowSchema == null || allowSchema.isEmpty()) {

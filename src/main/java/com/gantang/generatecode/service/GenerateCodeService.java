@@ -16,23 +16,31 @@ import com.gantang.generatecode.config.GenerateConfig;
 import com.gantang.generatecode.model.GenerateBean;
 import com.gantang.generatecode.model.GenerateProperty;
 
+/**
+ * 
+ * @author jyp10@foxmail.com
+ *
+ */
 public interface GenerateCodeService {
 
+	/**
+	 * 
+	 * @param beans          要生成代码的表及表结构
+	 * @param generateConfig 生成代码的配置
+	 */
 	default void generateCode(List<GenerateBean> beans, GenerateConfig generateConfig) {
 		for (GenerateBean bean : beans) {
 			bean.setAuthor(generateConfig.getAuthor());
-			generateCode(generateConfig, bean);
+			generateCode(bean, generateConfig);
 		}
 	}
 
 	/**
-	 * 生成代码
 	 * 
-	 * @param bean             bean
-	 * @param annotationAuthor annotationAuthor
-	 * @param config           配置信息
+	 * @param bean   要生成代码的表及表结构
+	 * @param config 生成代码的配置
 	 */
-	default void generateCode(GenerateConfig config, GenerateBean bean) {
+	default void generateCode(GenerateBean bean, GenerateConfig config) {
 		Set<String> reverseTempNames = reverseTempNames(config);
 		if (reverseTempNames == null) {
 			return;
@@ -46,6 +54,11 @@ public interface GenerateCodeService {
 		}
 	}
 
+	/**
+	 * 
+	 * @param path path
+	 * @return File
+	 */
 	default File createFile(String path) {
 		File file = new File(path);
 		File parentFile = file.getParentFile();
@@ -65,10 +78,9 @@ public interface GenerateCodeService {
 	/**
 	 * 生成代码
 	 * 
-	 * @param tempName         模板名称
-	 * @param bean             bean
-	 * @param propertys        bean 的属性对象
-	 * @param annotationAuthor 注释生成代码的人
+	 * @param tempName  模板名称
+	 * @param bean      bean
+	 * @param propertys bean 的属性对象
 	 * @return 代码
 	 */
 	default String createCode(String tempName, GenerateBean bean, List<GenerateProperty> propertys) {
@@ -116,11 +128,32 @@ public interface GenerateCodeService {
 		}
 	}
 
+	/**
+	 * 
+	 * @param config 生成代码的配置
+	 * @return 模板名称
+	 */
 	Set<String> reverseTempNames(GenerateConfig config);
 
+	/**
+	 * 
+	 * @param bean     bean
+	 * @param config   生成代码的配置
+	 * @param tempName 模板名称
+	 */
 	void setBeanPackage(GenerateBean bean, GenerateConfig config, String tempName);
 
+	/**
+	 * 
+	 * @param bean     bean
+	 * @param config   生成代码的配置
+	 * @param tempName 模板名称
+	 */
 	void setCodePath(GenerateBean bean, GenerateConfig config, String tempName);
 
+	/**
+	 * 
+	 * @return 模板名称
+	 */
 	String getTempType();
 }

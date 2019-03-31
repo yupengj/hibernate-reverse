@@ -24,7 +24,7 @@ oracle psotgresql
 3. 在 jar 所在的文件夹用命令行运行 `java -jar hibernate-reverse-2.0.0-SNAPSHOT.jar` 命令
 4. 启动成功后访问  http://localhost:8081
 
-## 页面说明
+# 页面说明
 
 ### 左侧表单页面
 ![](https://github.com/yupengj/hibernate-reverse/blob/master/src/main/resources/doc/fp.png?raw=true)

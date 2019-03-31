@@ -1,0 +1,42 @@
+Ext.define('${bean.beanPackage}', {
+	extend : 'gantang.component.GantSearchListEditPanel',
+	xtype : '${bean.schemaNameLowerCase}_${bean.nameVariable}View',
+	uses : [],
+	dataUrl : '[${bean.schemaNameLowerCase}]/${bean.nameVariable}/batchSave',
+	searchPanel : {
+		xtype : 'panel',
+		layout : {
+			type : 'table',
+			columns : 3
+		},
+		defaults : {
+			xtype : 'textfield'
+		},
+		items : [{
+			fieldLabel : tr('text1'),
+			name : 'text1'
+		}, {
+			fieldLabel : tr('text2'),
+			name : 'text2'
+		}]
+	},
+	//barsResourcePath:{"startbutton" : "${bean.beanPackagePrefix}View.startbutton"},
+	bars : ['startbutton', 'endbutton', 'add', 'restore', 'delete', 'save'],
+	columns : [{
+		#foreach ( $property in ${propertyList} )
+	text : tr('${property.name}'),
+			dataIndex : '${property.name}',
+			width : 120,
+			editor : {
+				xtype : 'textfield'
+			}
+		},{
+		#end
+	}],
+	initComponent : function() {
+		Ext.apply(this, {
+			store : Ext.create('${bean.beanPackagePrefix}Store',)
+		});
+		this.callParent(arguments);
+	}
+});

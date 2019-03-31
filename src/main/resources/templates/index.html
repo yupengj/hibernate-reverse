@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>生成代码</title>
+	<meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<script src="../static/js/jquery.js" type="text/javascript" th:src="@{/js/jquery.js}"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="left">
+			<div class="form">
+				<label>
+					<span>作者 :</span>
+					<input type="text" name="author" />
+				</label>
+				<label>
+					<span>Java 包跟路径</span>
+					<input type="text" name="javaRootPackage" value="com.gantang"/>
+				</label>
+				<label>
+					<span>ExtJs 包跟路径</span>
+					<input type="text" name="jsRootPackage" value="gantang"/>
+				</label>
+				<label>
+					<span>包名前缀 :</span>
+					<input type="text" name="prefixPackage" />
+				</label>
+				<label>
+					<span>包名后缀 :</span>
+					<input type="text" name="suffixPackage"/>
+				</label>
+				<label>
+					<span>ExtJs 模块  :  model,store,view,controller</span>
+					<input type="text" name="jsModels" value="model,store,view,controller" />
+				</label>
+				<label>
+					<span>Java 模块 : model,dao,daoImpl,service,serviceImpl,controller</span>
+					<input type="text" name="javaModels" value="model,dao,daoImpl,service,serviceImpl,controller"/>
+				</label>
+				<label>
+					<span>表名 :</span>
+					<textarea name="tableNames" readonly="readonly"></textarea>
+				</label>
+				<label>
+					<span>生成路径 : 要以 '\' 结尾</span>
+					<input type="text" name="outPath" value="D:\generateCode\" />
+				</label>
+				<button id="generateCode" >生成代码</button>
+			</div>
+		</div>
+
+		<div class="right">
+			<label class="form">
+				表名 : <input type="text" id="findTableName" name="tableName"/>
+			</label>
+			<div id = "tableList">
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" th:inline="javascript">
+	/*<![CDATA[*/
+		
+		$(function(){
+			// 查询表方法
+			$('#findTableName').on('keypress',function(event){  
+       			if(event.keyCode == "13"){
+       				$("#tableList").load('/findAllTable',{"tableName":this.value})
+       	 		}  
+    		});  
+			
+			// 生成代码方法
+			$('#generateCode').on('click',function(){
+				var data = {}
+	    		data['tableNames'] = $("[name='tableNames']").val()
+	    		$(":text").each(function(){data[this.name]=this.value});
+	 			$.ajax({
+	 				url:'/generateCode',
+	 				type:"POST",
+	 				contentType:'application/json;charset=UTF-8',
+	 				data:JSON.stringify(data),
+	 				success:function(data){
+	 					alert("生成代码成功")
+	 				}
+	 			});
+			});
+ 		});  
+	
+		// 全选 change 事件
+    	function selectAllChange(checkbox){
+    		$("[name='selectTable']").each(function(index, el){
+    			el.checked = checkbox.checked
+    		})
+    		if(checkbox.checked){
+    			this.checkboxChangeEven()
+    		}else{
+    			$("[name='tableNames']").val(null);
+    		}
+    	}
+    	
+		// 每行 checkbox change 事件
+    	function checkboxChangeEven(){
+    		$("[name='tableNames']").val(null);
+    		
+    		var tableNames = "";
+    		var count = $("[name='selectTable']").length;
+    		$("[name='selectTable']").each(function(index,el){
+    			if(el.checked){
+    				tableNames += $(el).attr("tablename") + ","
+    			}
+    		})
+    		tableNames = tableNames.substring(0, tableNames.length - 1)
+    		$("[name='tableNames']").val(tableNames);
+		}
+	
+	/*]]>*/
+</script>
+</html>

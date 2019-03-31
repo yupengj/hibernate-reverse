@@ -1,0 +1,27 @@
+Ext.define('${bean.beanPackage}', {
+    extend: 'Ext.data.Store',
+    requires: ['${bean.beanPackagePrefix}Model'],
+    constructor: function (cfg) {
+        var me = this;
+        cfg = cfg || {};
+        var url = cfg.url || '[${bean.schemaNameLowerCase}]/${bean.nameVariable}/find';
+        me.callParent([Ext.apply({
+            model: '${bean.beanPackagePrefix}Model',
+            autoLoad: true,
+            remoteFilter: true,
+            pageSize: 50,
+            proxy: Ext.create("gantang.proxy.AjaxProxy", {
+                url: url,
+                jsonData: {
+                	filterInfo : cfg.filterParams || {},
+					pageInfo : {}
+                },
+                reader: {
+                    type: 'json',
+                    root: 'data.content',
+                    totalProperty: 'data.totalCount'
+                }
+            })
+        }, cfg)]);
+    }
+});

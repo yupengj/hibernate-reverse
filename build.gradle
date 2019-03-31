@@ -1,9 +1,26 @@
-apply plugin: 'java'
+plugins {
+	id 'org.springframework.boot' version '2.2.0.BUILD-SNAPSHOT'
+	id 'java'
+}
 
-repositories { jcenter() }
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.gantang'
+version = '2.0.0-SNAPSHOT'
+
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/snapshot' }
+	maven { url 'https://repo.spring.io/milestone' }
+}
 
 dependencies {
-	compile "org.apache.velocity:velocity-engine-core:2.0"
-	compile "org.slf4j:slf4j-simple:1.7.25"
-	testCompile 'junit:junit:4.12'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.sgota.springboot:spring-boot-velocity-starter:1.0.0'
+	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

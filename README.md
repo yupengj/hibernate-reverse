@@ -27,18 +27,19 @@ oracle psotgresql
 ## 页面说明
 
 ### 左侧表单页面
+![](https://github.com/yupengj/hibernate-reverse/blob/master/src/main/resources/doc/fp.png?raw=true)
 - 作者 : 生成代码的人,类上的@author注解的值
 - Java 包跟路径: 如: `package com.gantang.xxxx;`
 - ExtJs 包跟路径: 如: `Ext.define('gantang.xxx', {})`
 - 包名前缀和包名后缀是相对 schema 来说的, 如: java 包 'com.gantang.a.schema.b.xxx;'
-> a 就是包名前缀, 支持多层级带"."的名称
-> b 就是包名后缀, 支持多层级带"."的名称
+> a 就是包名前缀, 支持多层级带"."的名称,b 就是包名后缀, 支持多层级带"."的名称
 - ExtJs 模块: ExtJs 要生成代码的模块,默认全部生成
 - Java 模块: Java 要生成代码的模块,默认全部生成
 - 表名: 右侧选择过来的表名
 - 生成路径: 代码生成路径
 
 ### 右侧查询列表页面
+![](https://github.com/yupengj/hibernate-reverse/blob/master/src/main/resources/doc/lp.png?raw=true)
 - 表名: 输入一个表名然后按回车键`Enter`进行查询
 
 ## 更新记录

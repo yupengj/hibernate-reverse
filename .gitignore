@@ -1,29 +1,12 @@
+Thumbs.db
+.DS_Store
 .gradle
-/build/
-!gradle/wrapper/gradle-wrapper.jar
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
+build/
 .idea
-*.iws
 *.iml
 *.ipr
-/out/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
-.vscode/
+*.iws
+.project
+.settings
+.classpath
+/bin/

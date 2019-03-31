@@ -19,7 +19,7 @@ oracle psotgresql
 6. 启动成功后访问 http://localhost:8081
 
 ## 使用方法-jar
-1. [hibernate-reverse-2.0.0-SNAPSHOT.jar](https://github.com/yupengj/hibernate-reverse/blob/master/src/main/resources/doc/hibernate-reverse-2.0.0-SNAPSHOT.jar?raw=true)
+1. 下载 [hibernate-reverse-2.0.0-SNAPSHOT.jar](https://github.com/yupengj/hibernate-reverse/blob/master/src/main/resources/doc/hibernate-reverse-2.0.0-SNAPSHOT.jar?raw=true)
 2. 用解压工具打开,修改 jar 中 application.yml 文件数据库连接
 3. 在 jar 所在的文件夹用命令行运行 `java -jar hibernate-reverse-2.0.0-SNAPSHOT.jar` 命令
 4. 启动成功后访问  http://localhost:8081

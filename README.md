@@ -1,6 +1,6 @@
 # hibernate-reverse 生成 java 和 Ext.js 代码
 
-## 实现方式技术
+## 实现技术
 基于 spring-boot(2.2.0, web, thymeleaf, jdbc)  + velocity（V1.4.7）实现。构建工具 gradle
 
 ## 支持数据库
